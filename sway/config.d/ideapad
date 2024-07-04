@@ -1,0 +1,7 @@
+# vim: filetype=config
+
+# Disable touch screen
+exec --no-startup-id swaymsg input "1267:127:ELAN_Touchscreen" events disabled
+
+# Configure outputs
+output eDP-1 pos 0 0

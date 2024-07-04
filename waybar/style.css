@@ -1,0 +1,131 @@
+@define-color background rgba(43, 48, 59, 0.7);
+
+@define-color primary #2195f2;
+@define-color primary-light #6ec6ff;
+@define-color primary-dark #0068bf;
+
+@define-color success #aed581;
+@define-color warning #ffea00;
+@define-color danger #f53c3c;
+
+@define-color white #ffffff;
+@define-color black #212121;
+@define-color gray #cbcbcb;
+
+@keyframes blink {
+    to {
+        border-top: 2px solid transparent;
+    }
+}
+
+window#waybar {
+    background: @background;
+    color: @white;
+}
+window#waybar * {
+    border: none;
+    font-family: Hack, Font Awesome;
+    font-size: 14px;
+    min-height: 0;
+}
+
+#workspaces button {
+    border-radius: 0px;
+    padding: 0 8px;
+    background-color: unset;
+    color: @white;
+}
+#workspaces button.visible {
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid @white;
+    background-color: @gray;
+    color: @black;
+}
+#workspaces button.focused {
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid @white;
+    background-color: @primary;
+    color: @white;
+}
+#workspaces button.urgent {
+    background-color: @danger;
+    color: @white;
+}
+
+#mode {
+    background-color: @danger;
+    color: @white;
+    padding: 0 6px;
+}
+
+#window,
+#backlight,
+#battery,
+#clock,
+#cpu,
+#idle_inhibitor,
+#memory,
+#network,
+#pulseaudio,
+#temperature,
+#disk,
+#tray,
+#custom-mako
+{
+    padding: 0 8px;
+    margin: 0 2px;
+    min-width: 20px;
+}
+
+#window {
+    color: @gray;
+}
+#network {
+    color: @success;
+}
+#clock {
+    color: @primary-light;
+}
+#tray {
+    background-color: @black;
+}
+
+#pulseaudio.muted,
+#network.disconnected {
+    color: @danger;
+}
+
+#battery.charging,
+#custom-mako.activated,
+#idle_inhibitor.activated {
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid @success;
+}
+
+#battery.warning:not(.charging),
+#memory.warning,
+#disk.warning,
+#cpu.warning {
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid @warning;
+
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical:not(.charging),
+#memory.critical,
+#disk.critical,
+#cpu.critical {
+    border-bottom: 2px solid transparent;
+    border-top: 2px solid @danger;
+
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
