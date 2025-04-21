@@ -40,8 +40,9 @@ ethernet enp3s0 {
 }
 
 battery 0 {
-        format = "%status %percentage %remaining"
-}
+    format = " %status %percentage %remaining"
+    path = "/sys/class/power_supply/BAT1/uevent"
+ }
 
 run_watch DHCP {
         pidfile = "/var/run/dhclient*.pid"
@@ -74,7 +75,7 @@ volume master {
     #mixer = "Master"
     #mixer_idx = 0
 }
-cpu_temperature 0 {
-        format = ": %degrees °C"
-        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
-}
+# cpu_temperature 0 {
+#         format = ": %degrees °C"
+#         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
+# }
